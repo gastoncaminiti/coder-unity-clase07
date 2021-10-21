@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speedPlayer = 1f;
     public GameObject swordPlayer;
     public Vector3 initPosition = new Vector3(4, 2, 1);
+    public Vector3 swordPosition = new Vector3(0, 0, 0.5f);
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +23,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
       Move();
+      swordPlayer.transform.position = transform.position + swordPosition;
     }
 
     private void Move()
     {
         float ejeHorizontal = Input.GetAxisRaw("Horizontal");
         float ejeVertical = Input.GetAxisRaw("Vertical");
-        transform.Translate(speedPlayer * Time.deltaTime * new Vector3(-ejeVertical, 0, ejeHorizontal));
+        transform.Translate(speedPlayer * Time.deltaTime * new Vector3(ejeHorizontal, 0, ejeVertical));
     }
 }
